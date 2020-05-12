@@ -1,20 +1,11 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/home.css">
-    <title>Document</title>
-</head>
-<body>
-    <!-- start top-navbar -->
     <nav>
         <!-- <input type="checkbox" id="checkTopNav">
         <label id="checkNavBtn" for="checkTopNav"><img src="../icons/iconMenu.png" alt="" width="24px"></label> -->
         <div id="topNav">
-            <a class="logo" href="home.html"></a>
+            <a class="logo" href="../html/home.php"></a>
             <ul>
                 <li class="categorie">
-                    <a href="categorie.html">
+                    <a href="../html/categorie.php">
                         <div class="categorieTitle">
                             <div class="categorieIcon">
                             <span></span>
@@ -36,12 +27,12 @@
                         <button type="submit">Submit</button>
                     </form> 
                 </li>
-                <li><a href="panier.html">
+                <li><a href="../html/panier.php">
                         <div class="panierIcon"></div>
                         <span>Panier</span>
                     </a> 
                 </li>
-                <li><a href="inscription.html">
+                <li><a href="../html/inscription.php">
                         <div class="connextionIcon"></div>
                         <span>Se connecter</span>
                     </a> 
@@ -49,45 +40,4 @@
             </ul>
         </div>
     </nav>
-    <!-- end top-navbar -->
 
-    <div class="container">
-            <!-- start header -->
-        <header>
-            <div class="discription">
-                <span>Vous pouvez achetez facilement et rapidement des paniers pret</span>
-            </div>
-            <div class="slider">
-                <div class="backBtn"></div>
-                <div class="nextBtn"></div>
-                <div class="slid">
-                    <ul>
-                    </ul>
-                    <div class="basketImg"></div>
-                    <div class="basketTitle"></div>
-                    <div class="basketPrice"></div>
-                    <button id="addBasketBtn"></button>
-                </div>
-            </div>
-        </header>
-            <!-- end header -->
-
-        <section>
-        <!-- write your code here -->
-        </section>
-    </div>
-    
-    <!-- start footer -->
-    <footer>
-        <div class="topDiv">
-
-        </div>
-        <div class="bottomDiv">
-
-        </div>
-
-    </footer>
-    <!-- end footer -->
-    
-</body>
-</html>
