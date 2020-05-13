@@ -11,7 +11,7 @@
     <?php include '../includes/navbar.php';?>
 
     <section> 
-
+    
     </section>
     
     <!-- include footer -->

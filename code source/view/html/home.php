@@ -6,21 +6,21 @@
     <title>Document</title>
 </head>
 <body>
-
-        <!-- include navbar -->
-    <?php include '../includes/navbar.php';?>
+    <!-- include navbar -->
+    <?php require '../includes/navbar.php'; ?>
 
     <div class="container">
+
         <!-- include header -->
-        <?php include ('../includes/header.php');?>
-        
+        <?php require '../includes/header.php'; ?>
+
         <section>
         <!-- write your code here -->
         </section>
     </div>
-    
+
     <!-- include footer -->
-    <?php include ('../includes/footer.php');?>
+    <?php require '../includes/footer.php'; ?>
     
 </body>
 </html>
