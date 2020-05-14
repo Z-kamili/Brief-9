@@ -6,15 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- navbar -->
+    <!-- start top-navbar -->
     <nav>
         <!-- <input type="checkbox" id="checkTopNav">
         <label id="checkNavBtn" for="checkTopNav"><img src="../icons/iconMenu.png" alt="" width="24px"></label> -->
         <div id="topNav">
-            <a class="logo" href="index.php"></a>
+            <a class="logo" href="home.html"></a>
             <ul>
                 <li class="categorie">
-                    <a href="view/html/categorie.php">
+                    <a href="categorie.html">
                         <div class="categorieTitle">
                             <div class="categorieIcon">
                             <span></span>
@@ -36,7 +36,7 @@
                         <button type="submit">Submit</button>
                     </form> 
                 </li>
-                <li><a href="view/html/panier.php">
+                <li><a href="panier.html">
                         <div class="panierIcon"></div>
                         <span>Panier</span>
                     </a> 
@@ -46,22 +46,45 @@
                         <span>Se connecter</span>
                     </a> 
                 </li>
+                <li><a href="view/html/login.php">
+                        <div class="connextionIcon"></div>
+                        <span>Connecter</span>
+                    </a> 
+                </li>
             </ul>
         </div>
     </nav>
-    <!-- =============================================================================================================== -->
+    <!-- end top-navbar -->
 
     <div class="container">
-        <!-- include header -->
-        <?php require 'view/includes/header.php'; ?> 
+            <!-- start header -->
+        <header>
+            <div class="discription">
+                <span>Vous pouvez achetez facilement et rapidement des paniers pret</span>
+            </div>
+            <div class="slider">
+                <div class="backBtn"></div>
+                <div class="nextBtn"></div>
+                <div class="slid">
+                    <ul>
+                    </ul>
+                    <div class="basketImg"></div>
+                    <div class="basketTitle"></div>
+                    <div class="basketPrice"></div>
+                    <button id="addBasketBtn"></button>
+                </div>
+            </div>
+        </header>
+            <!-- end header -->
 
         <section>
         <!-- write your code here -->
         </section>
     </div>
     
-    <!-- include footer -->
-    <?php require 'view/includes/footer.php'; ?> 
+   
+ <?php require 'code source/include/footer.php'; ?> 
  
+    
 </body>
 </html>
