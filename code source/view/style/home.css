@@ -62,7 +62,11 @@ nav #checkNavBtn .menuIcon span {
   }
 }
 
-nav .logo {
+nav a {
+  margin: auto;
+}
+
+nav a .logo {
   width: 136px;
   height: 40px;
   margin: auto 32px;
@@ -72,8 +76,8 @@ nav .logo {
 }
 
 @media (max-width: 767px) {
-  nav .logo {
-    margin: auto;
+  nav a .logo {
+    margin: 8px auto;
   }
 }
 
@@ -95,7 +99,7 @@ nav #topNav {
     height: -webkit-max-content;
     height: -moz-max-content;
     height: max-content;
-    z-index: 0;
+    z-index: 11;
   }
 }
 
@@ -106,7 +110,6 @@ nav #topNav ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 8px 0;
 }
 
 @media (max-width: 767px) {
@@ -115,6 +118,8 @@ nav #topNav ul {
     padding: 64px 0 32px 0;
     background-color: #FCFBFB;
     width: 100%;
+    -webkit-box-shadow: 0px 4px 4px 3px rgba(128, 128, 128, 0.466);
+            box-shadow: 0px 4px 4px 3px rgba(128, 128, 128, 0.466);
   }
 }
 
@@ -347,6 +352,7 @@ nav #topNav ul .deconnexion a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: 8px auto;
 }
 
 nav #topNav ul .deconnexion a .deconnexionIcon {
@@ -429,7 +435,8 @@ header .standardBasket .slider .slid .basketImg {
   width: 40%;
   height: 300px;
   background-image: url(../imgs/unnamed.png);
-  background-size: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 header .standardBasket .slider .slid .containerTitle {

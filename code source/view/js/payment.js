@@ -16,7 +16,7 @@ window.onclick = function(e) {
   console.log(activeDropdown)
   if (e.target.tagName === 'LI' && activeDropdown){
     if (e.target.innerHTML === 'Master Card') {
-      document.getElementById('credit-card-image').src = 'https://dl.dropboxusercontent.com/s/2vbqk5lcpi7hjoc/MasterCard_Logo.svg.png';
+      document.getElementById('credit-card-image').src = '../imgs/MasterCard_Logo.png';
           activeDropdown.classList.remove('visible');
       activeDropdown = null;
       e.target.innerHTML = document.getElementById('current-card').innerHTML;
@@ -30,7 +30,7 @@ window.onclick = function(e) {
       document.getElementById('current-card').innerHTML = 'American Express';      
     }
     else if (e.target.innerHTML === 'Visa') {
-         document.getElementById('credit-card-image').src = 'https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png';
+         document.getElementById('credit-card-image').src = '../imgs/visa_logo.png';
           activeDropdown.classList.remove('visible');
       activeDropdown = null;
       e.target.innerHTML = document.getElementById('current-card').innerHTML;

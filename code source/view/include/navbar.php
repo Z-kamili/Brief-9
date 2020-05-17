@@ -1,5 +1,6 @@
     <nav>
-        <a href="../html/home.php" class="logo"> </a>
+        <a href="../html/home.php" > <div class="logo"></div></a>
+        
         <input type="checkbox" id="checkboxNavbar">
         <label id="checkNavBtn" for="checkboxNavbar">
             <div class="menuIcon">

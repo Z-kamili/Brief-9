@@ -46,7 +46,8 @@ header{
                     width: 40%;
                     height: 300px;
                     background-image: url(../imgs/unnamed.png);
-                    background-size: 100%;
+                    background-repeat: no-repeat;
+                    background-size: cover;
                 }
                 .containerTitle{
                     width: 30%;

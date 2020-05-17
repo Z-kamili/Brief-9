@@ -23,10 +23,10 @@
                 <span>Connect with Us</span>
                 <!-- <div> -->
                     <ul>
-                        <li><img src="../icons/Icon-twitter.png" alt=twitter></li>
-                        <li><img src="../icons/Icon-facebook.png" alt="facebook"> </li>
-                        <li><img src="../icons/Icon-instagram.png" alt="instagram"></li>
-                        <li><img src="../icons/Icon-youtube.png" alt="youtube"> </li>
+                        <li><img src="../icons/Icon-twitter-.png" alt=twitter></li>
+                        <li><img src="../icons/Icon-facebook-.png" alt="facebook"> </li>
+                        <li><img src="../icons/Icon-linkedin-.png" alt="instagram"></li>
+                        <li><img src="../icons/Icon-youtube-.png" alt="youtube"> </li>
                     </ul>
                 <!-- </div> -->
             </div>

@@ -1,12 +1,6 @@
+/* ========================== top navbar ===========================*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
-* {
-  padding: 0;
-  margin: 0;
-}
-
 nav {
   width: 100%;
   height: 56px;
@@ -15,7 +9,7 @@ nav {
   top: 0;
   background-color: #FCFBFB;
   box-shadow: 0px 0px 4px 3px rgba(128, 128, 128, 0.466);
-  z-index: 1;
+  z-index: 11;
 }
 
 @media (max-width: 767px) {
@@ -59,7 +53,11 @@ nav #checkNavBtn .menuIcon span {
   }
 }
 
-nav .logo {
+nav a {
+  margin: auto;
+}
+
+nav a .logo {
   width: 136px;
   height: 40px;
   margin: auto 32px;
@@ -69,8 +67,8 @@ nav .logo {
 }
 
 @media (max-width: 767px) {
-  nav .logo {
-    margin: auto;
+  nav a .logo {
+    margin: 8px auto;
   }
 }
 
@@ -86,7 +84,7 @@ nav #topNav {
     display: none;
     width: 100%;
     height: max-content;
-    z-index: 0;
+    z-index: 11;
   }
 }
 
@@ -95,7 +93,6 @@ nav #topNav ul {
   list-style: none;
   color: #0992FB;
   display: flex;
-  margin: 8px 0;
 }
 
 @media (max-width: 767px) {
@@ -104,6 +101,7 @@ nav #topNav ul {
     padding: 64px 0 32px 0;
     background-color: #FCFBFB;
     width: 100%;
+    box-shadow: 0px 4px 4px 3px rgba(128, 128, 128, 0.466);
   }
 }
 
@@ -142,6 +140,7 @@ nav #topNav ul li a:hover {
     box-shadow: 0px 0px 2px 0px gray;
     height: max-content;
     background-color: #FCFBFB;
+    padding-left: 0;
   }
 }
 
@@ -220,7 +219,9 @@ nav #topNav ul .categorie #categorieDropdown li a {
     padding: 0 16px !important;
   }
 }
-
+form{
+  margin: 0;
+}
 nav #topNav ul .search {
   width: 40%;
   border: 1px solid rgba(128, 128, 128, 0.466);
@@ -325,6 +326,7 @@ nav #topNav ul .panier a span {
 
 nav #topNav ul .deconnexion a {
   display: flex;
+  margin: 8px auto;
 }
 
 nav #topNav ul .deconnexion a .deconnexionIcon {
@@ -339,7 +341,9 @@ nav #topNav ul .deconnexion a .deconnexionIcon {
 nav #topNav ul .deconnexion a span {
   margin: auto 0;
 }
-/* ============================= */
+
+
+/* ============================= end navbar =========================== */
 
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
 body,html {
@@ -353,8 +357,8 @@ h2 {
   margin-top:25px;
   text-align:center;
   font-weight:200;
-  font-size:19px;
-  font-size:1.2rem;
+  font-size:24px;
+  font-family: 'Open Sans', sans-serif;
   
 }
 .container {
@@ -415,6 +419,7 @@ ul li:hover {
 .half-input-table {
   border-collapse:collapse;
   width:100%;
+  color: white;
 }
 .half-input-table td:first-of-type {
   border-right:10px solid #4488dd;
@@ -460,6 +465,7 @@ ul li:hover {
 .order-table {
     position:relative;
 }
+
 .line {
   height:1px;
   width:100%;
@@ -473,8 +479,15 @@ ul li:hover {
 }
 .order-info-content {
   table-layout:fixed;
-
 }
+
+#payment-logo{  
+  width: 330px;
+  margin: 130px 0;
+}
+#payment-logo img{
+  width: 100%;
+} 
 
 .full-width {
   width:100%;
@@ -503,12 +516,13 @@ ul li:hover {
 
 .total {
   margin-top:25px;
-  font-size:20px;
-  font-size:1.3rem;
+  font-size:32px;
+  /* font-size:1.3rem; */
+  font-family: 'Open Sans', sans-serif;
   position:absolute;
-  bottom:30px;
-  right:27px;
-  left:35px;
+  bottom:64px;
+  right:32px;
+  left:32px;
 }
 .dense {
   line-height:1.2em;
@@ -595,7 +609,12 @@ ul li:hover {
   display:flex;
   width:100%;
 }
-@media (max-width: 600px) {
+
+@media (max-width: 767px) {
+  .container{
+    padding: 72px 16px 260px 16px;
+    z-index: 0;
+  }
   .window {
     width: 100%;
     height: 100%;
@@ -616,6 +635,14 @@ ul li:hover {
   }
   .pay-btn {
     border-radius:0px;
+  }
+}
+@media (max-width: 600px) {
+  .container{
+    padding: 72px 16px 360px 16px;
+  }
+  #payment-logo{  
+    width: 260px;
   }
 }
 /* =============================== */
