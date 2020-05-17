@@ -1,14 +1,125 @@
-*{
-    padding: 0;
-    margin: 0;
-}
-@import "_topNav" , "_footer";
-body{
-    background-color: $bodyBgColor;
-    section{
-        height: 100%;
-        margin: 60px 5% 0 7%;
-        background-color: $mainBgColor;
+$basic_blue: #0992fb;
+$grey_border: #70707028;
+$line_seperator: #0992fb;
 
-    }
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "rockwell";
+}
+@import "_topNav", "_footer";
+
+.blank {
+  height: 40px;
+}
+.blank_md {
+  height: 27px;
+}
+.width_40 {
+  width: 49%;
+}
+.width_20 {
+  width: 17%;
+}
+.size_imgs {
+  height: 62px;
+  width: 73px;
+}
+.font_size_1 {
+  font-size: 20px;
+}
+.flex_start {
+  display: flex;
+  align-items: flex-start;
+}
+.flex_center {
+  display: flex;
+  align-items: center;
+}
+.flex_between {
+  display: flex;
+  justify-content: space-between;
+}
+.flex_center_all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex_center_justify {
+  display: flex;
+  justify-content: center;
+}
+.flex_ {
+  display: flex;
+}
+
+.name_margin_left {
+  margin-left: 40px;
+}
+.icon_margin {
+  margin-left: 10;
+  margin-right: 10px;
+}
+.toUpperCase {
+  text-transform: uppercase;
+}
+.color_blue {
+  color: $basic_blue;
+}
+.panier_container {
+  margin-bottom: 15px;
+}
+.titles_container {
+  padding: 20px 17px;
+}
+.padding_inside {
+  padding: 25px 17px;
+}
+.border_right {
+  border-right: 1px solid $grey_border;
+}
+.shadow {
+  //   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.01);
+}
+.quantity {
+  font-size: 23px;
+  border: none;
+  background-color: $mainBgColor;
+}
+.price_size {
+  font-size: 32px;
+}
+.sm_margin_top {
+  margin-top: 20px;
+}
+.container_80 {
+  width: 80%;
+}
+
+.line_seperator {
+  height: 1px;
+  background-color: $line_seperator;
+}
+.remove_input_style {
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+body {
+  background-color: $bodyBgColor;
+  section {
+    // height: 100%;
+    margin: 60px 5% 0 7%;
+    background-color: $mainBgColor;
+  }
 }
