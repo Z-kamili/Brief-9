@@ -15,11 +15,11 @@ Database::disconnect();
 //     }
 // }
 
-session_start();
+
 $_SESSION['productId']=[];
 if(isset($_POST['addToCart'])){
 
-    
+    session_start();
 
     $_SESSION['productId'][] = $_POST['idProd'];
 
@@ -42,6 +42,7 @@ Database::disconnect();
 $_SESSION['panierFixId']=[];
 if(isset($_POST['addPFToCart'])){
 
+    session_start();
 
     $_SESSION['panierFixId'][] = $_POST['idPanF'];
 
@@ -89,6 +90,38 @@ $list2=array_unique($_SESSION['panierFixId']);
                     <h1>Panier <?php echo $row['ID_PFIX']; ?> :</h1>
                     <img src="../imgs/Icon material-shopping-cart.svg" alt="">
                     <p>cree en : <?php echo $row['DATE_PANIER']; ?></p>
+                    <div>
+                        <h2>list of products :</h2>
+                        <?php   $db = Database::connect();
+                                $idPanierTemp = $row['ID_PFIX'];
+                                $stmt3 = $db->prepare("SELECT * FROM contenir_panierfix WHERE ID_PFIX = $idPanierTemp");
+                                $stmt3->execute();
+
+                                if($stmt3->rowCount()){
+                                    while($row = $stmt3->fetch()){ ?>
+
+
+                                                <?php  
+                                                $idProdTemp = $row['ID_PRD'];
+                                                $stmt4 = $db->prepare("SELECT * FROM produit WHERE ID_PRD = $idProdTemp");
+                                                $stmt4->execute();
+
+                                                if($stmt4->rowCount()){
+                                                    while($rowP = $stmt4->fetch()){ ?>
+                                                        
+                                                        <p>nom produit : <?php echo $rowP['NOM'] ?> ,prix : <?php echo $rowP['prix'] ?>, quantité : <?php echo $row['QTE'] ?> </p>
+
+
+                                                    <?php } ?>
+                                                 <?php } ?>
+
+
+                                        <?php } ?>
+                                <?php } ?>
+                                
+                         <?php Database::disconnect(); ?>
+
+                    </div>
                     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                         <input type="hidden" value="<?php echo $row['ID_PFIX']; ?>" name="idPanF">
                         <input type="submit" value="add to cart" name="addPFToCart">

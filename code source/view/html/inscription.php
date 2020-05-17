@@ -1,5 +1,5 @@
 <?php
-require '../../Database/database.php';
+// require '../../Database/database.php';
 $email = $emailerror = $password = $passworderror = $erreur = $name = $prenom  = $cpassword = $nameerror = $prenomerror =  "";
 $status = true;
 $error = true;
@@ -51,9 +51,12 @@ function checkInput($data){
     <title>Document</title>
 </head>
 <body>
-<div class="image">
-    <img src="../imgs/logo.png" style="width: 180px; margin-bottom: 30px;">
-</div>
+    <!-- include navbar -->
+    <?php include '../include/navbar.php';?>
+
+    <div class="image">
+        <img src="../imgs/logo.png" style="width: 180px; margin-bottom: 30px;">
+    </div>
     <form method="post" action="inscription.php">
         <input type="text" placeholder="Nom" name="name" >
         <div>
@@ -77,5 +80,8 @@ function checkInput($data){
         </div>
         <input type="submit" name="Inscription">
     </form>
+
+    <!-- include footer -->
+    <?php include ('../include/footer.php');?>
 </body>
 </html>
