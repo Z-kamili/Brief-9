@@ -9,6 +9,11 @@ body{
         height: 100%;
         margin: 60px 5% 0 7%;
         background-color: $mainBgColor;
-
+        @media #{$maxMobile} {
+            margin: 0;
+        }
     }
-}
+} 
+
+
+

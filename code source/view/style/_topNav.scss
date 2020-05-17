@@ -1,249 +1,260 @@
 
 @import "_variables";
-
-// #checkTopNav{
-//     display: none;
-//     @media #{$maxMobile}{
-//         &:checked ~#topNav {
-//         display:block;
-//         }
-//         &:checked ~#checkNavBtn {
-//             background-color: rgba($color: #000000, $alpha: .0);
-//             border-bottom: 3px solid rgba($color: #000000, $alpha: .0);
-
-//         }
-//     }
-// }
-// #checkNavBtn{
-//     display: none;
-//     @media #{$maxMobile}{
-//         display: block;
-//         position: fixed;
-//         top: 0;
-//         left: 0;
-//         width: 100%;
-//         // height: 48px;
-//         color: $thirdColor;
-//         background-color: white;
-//         border-bottom: 3px solid $mainColor;
-//         z-index: 50;
-//     }
-//     img{
-//         margin: 24px 0 24px 24px;
-//     }
-// }
-
-#topNav{
+nav{
     width: 100%;
     height: 56px;
     display: flex;    
     position: fixed; 
     top: 0;
     background-color: $mainBgColor;  
-    box-shadow: 0px 0px 8px 0px black;
-    justify-content: space-between;
+    box-shadow: 0px 0px 4px 3px rgba(128, 128, 128, 0.466);
     z-index: 1;
-    // @media #{$maxMobile}{
-    //     display: none;
-    //     text-align: center;
-    //     padding: 72px 0 32px 0;
-    //     width: 70%;
-    //     border-right: 3px solid $mainColor;
-    //     background-color: rgba($color: #000000, $alpha: .9);
-    // }
+    @media #{$maxMobile}{
+        display:block;
+        }
+    #checkboxNavbar{
+        display: none;
+        @media #{$maxMobile}{
+            &:checked ~#topNav {
+            display:block;
+            }
+            // &:checked ~#checkNavBtn {
+            //     background-color: rgba($color: #000000, $alpha: .0);
+            //     border-bottom: 3px solid rgba($color: #000000, $alpha: .0);
+            // }
+        }
+    }
+    #checkNavBtn{
+        display: none;
+        .menuIcon{
+            margin: 16px;
+            @media #{$maxMobile} {
+            }
+            span{
+                background-color: $mainColor;
+                border: 2px solid $mainBgColor;
+                height: 3px;
+                width: 21px;
+                display: block;
+            }
+        }
+        @media #{$maxMobile}{
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    }
     .logo{
-        width: 120px;
-        height: 36px;
+        width: 136px;
+        height: 40px;
         margin: auto 32px;
         background-image: url(../imgs/logo.png);
-        background-size: cover;
+        background-size: 100%;
         background-repeat: no-repeat;
-       @media #{$maxMobile} {
+        @media #{$maxMobile} {
+            margin: auto;
         }
     }
-    ul{ 
-        width: 80%;
-        list-style: none;
-        color: $mainColor;    
-        display: flex;
-        // padding: 8px 0;
-        margin: 8px 0;
-        @media #{$maxMobile} {
-            display: block;
-            padding: 32px 0 0 0;
-
+    #topNav{
+        width: 100%;
+        height: 100%;
+        display: flex;    
+        justify-content: space-between;
+        @media #{$maxMobile}{
+            display: none;
+            width: 100%;
+            height: max-content;
+            z-index: 0;
         }
-        li{
-            margin:auto 5% 0 0;
-            a{
-                text-decoration: none;
-                font-family: $FontFamily3;
-                color: $secondColor;
-                font-weight: bold;
-            }
-            a:hover{
-                color: $mainColor;
-            }
+        
+        ul{ 
+            width: 88%;
+            list-style: none;
+            color: $mainColor;    
+            display: flex;
+            margin: 8px 0;
             @media #{$maxMobile} {
-                margin: 0 0 24px 0;
-                
+                display: block;
+                padding: 64px 0 32px 0;
+                background-color: $mainBgColor;
+                width: 100%;
             }
-        }
-        .categorie{
-            width: 220px;
-            .categorieTitle{
-                border: 1px solid gray;
-                display: flex;  
-                padding: 8px;
-                .categorieIcon{
-                    margin: auto 4px;
-                    span{
-                        background-color: $mainColor;
-                        border: 2px solid $mainBgColor;
-                        height: 4px;
-                        width: 24px;
-                        display: block;
+            li{
+                margin: auto 0px;
+                a{
+                    text-decoration: none;
+                    font-family: $navFont;
+                    color: $secondColor;
+                    font-size: 14px;
+                    font-weight: bold;
+                    &:hover{
+                        color: $mainColor;
                     }
                 }
-                p{
-                    margin:auto 8px;
+                @media #{$maxMobile} {
+                    margin: 24px 5% ;
+                    
                 }
             }
-        
-            ul{
-                display: block;
-                visibility: hidden;
-            }
-        }
-        .search{
-            width: 30%;
-            border: 1px solid gray;
-            padding: 4px;
-            form{
-                width: 100%;
-                input{
-                    width: 80%;
-                    padding: 8px 24px 8px 8px;
-                    margin: 0 24px 0 0;
-                    border: none;
+            .categorie{
+                @media #{$maxMobile} {
+                    padding: 0 8px;
                 }
-                input:focus{
-                    outline: none;
+                @media #{$minSmall} {
+                    width: 160px;
+                    height: 37px;
+                    box-shadow: 0px 0px 2px 0px gray;
+                    height: max-content;
+                    background-color: $mainBgColor;
                 }
-            }
-        }
-
-    }
-    button{
-        border: white;
-        background-color: black;
-        &:hover{
-            color: $thirdColor;
-            background-color: $mainColor;
-            border: none;
-        }
-    }
-}
-.sideNav{
-    display: flex;
-    position: fixed;
-    margin-top: 200px;
-    z-index: 10;
-    .themeContainer{
-        height: max-content;
-        width: max-content;
-        background-color: $thirdColor;
-        border: 2px solid white;
-        border-left: none;
-        border-radius: 4px;
-        padding: 8px;
-        display: none;
-        .theme{
-            display: flex;
-            height:max-content;
-            width: max-content;
-            padding: 8px;
-            .color{
-                height: 32px;
-                width: 120px;
-                border: 2px solid $mainColor;
-                border-radius: 4px;
-                margin-right: 4px;
-            }
-            .del{
-                height: 32px;
-                width: 32px;
-                background-color: $thirdColor;
-                border: 2px solid $mainColor;
-                border-radius: 4px;
-                .moins{
-                    height: 4px;
-                    width: 12px;                    
-                    background-color: white;
-                    position: relative;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    left: 30%;
+                @media #{$minMedium} {
+                    width: 200px;
+                }
+                @media #{$minLarge} {
+                    width: 260px;
+                }
+                #checkboxCategorie{
+                    display: none;
+                    &:checked ~#categorieDropdown {
+                        display:block;
+                    }
+                }
+                .categorieTitle{
+                    border: 1px solid rgba(128, 128, 128, 0.466);
+                    display: flex;  
+                    padding: 8px;
+                    @media #{$maxMobile} {
+                        border: none;
+                        padding: 0px;
+                    }
+                    .categorieIcon{
+                        margin: auto 4px;
+                        @media #{$maxMobile} {
+                            margin: 0;
+                            padding: 0px;
+                        }
+                        span{
+                            background-color: $mainColor;
+                            border: 2px solid $mainBgColor;
+                            height: 2px;
+                            width: 21px;
+                            display: block;
+                        }
+                    }
+                    p{
+                        margin:auto 8px;
+                    }
+                }
+                #categorieDropdown{
+                    display: none;
+                    margin: 16px 0;
+                    li{
+                        padding: 0 0 0 16px;
+                        margin: 12px 0;
+                        a{
+                            font-size: 12px;
+                        }
+                    }
+                    @media #{$maxMobile} {
+                        padding: 0 16px !important;
+                    }
                 }
             }
-            input{
-                margin-right: 4px;
-                font-size: $mainFontSize;
-                border: 2px solid $mainColor;
+            .search{
+                width: 40%;
+                border: 1px solid rgba(128, 128, 128, 0.466);
+                @media #{$maxMobile} {
+                    position: absolute;
+                    display: block;
+                    width: 90%;
+                    top: 80px;
+                    left: 5%;
+                    margin: 0;
+                }
+                @media #{$minSmall} {
+                    margin: auto 3% auto 10px;
+                }
+                @media #{$minMedium} {
+                    margin: auto 6% auto 10px;
+                }
+                @media #{$minLarge} {
+                    margin: auto 10% auto 10px;
+                }
+                form{
+                    width: 100%;
+                    display: flex;
+                    input{
+                        width: 90%;
+                        padding: 8px 0px 8px 8px;
+                        margin: 0 8px 0 0;
+                        border: none;
+                        font-size: 13px;
+                        font-family: $navFont;
+                        font-weight: bold;
+                    }
+                    input:focus{
+                        outline: none;
+                    }
+                    button{
+                        background-color: $mainBgColor;
+                        margin: auto 8px;
+                        border: none;
+                        
+                        img{
+                            width: 21px;
+                            height: 21px;
+                        }
+                    }
+                }
             }
-            .add{
-                height: 32px;
-                width: 32px;
-                background-color: $thirdColor;
-                border: 2px solid $mainColor;
-                border-radius: 4px;
+            .panier{
+                a{
+                    display: flex;
+                    .panierIcon{
+                        width: 22px;
+                        height: 22px;
+                        background-image: url(../icons/Icon-shopping-cart.png);
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        margin: auto 8px;
+                    }
+                    span{
+                        margin: auto 0;
+                    }
+                }    
+            }
+            .deconnexion{
                 
-            }
-            .plus1{
-                height: 4px;
-                width: 12px;                    
-                background-color: white;
-                position: relative;
-                top: 50%;
-                transform: translateY(-50%);
-                left: 30%;
-            }
-            .plus2{
-                height: 12px;
-                width: 4px;                    
-                background-color: white;
-                position: relative;
-                top: 37%;
-                transform: translateY(-50%);
-                left: 42.5%;
-            }
-            #color1{
-                background-color: #16a085;
-            }
-            #color2{
-                background-color: #2980b9;
-            }
-            #color3{
-                background-color: #c0392b;
-            }#color4{
-                background-color: #f39c12;
+                @media #{$maxMobile} {
+                }
+                @media #{$minSmall} {
+                    position: relative;
+                    margin: auto 16px;
+                }
+                @media #{$minMedium} {
+                    position: relative;
+                }
+                @media #{$minLarge} {
+                    position: absolute;
+                    right: 24px;
+                    margin-top: 10.5px;
+                }
+                a{
+                    display: flex;
+                    .deconnexionIcon{
+                        width: 22px;
+                        height: 19px;
+                        background-image: url(../icons/Icon-log-out.png);
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        margin: auto 8px;
+                    }
+                    span{
+                        margin: auto 0;
+                    }
+                }
             }
         }
-
-    }
-    .clickable{
-        height: 120px;
-        width: 8px;
-        background-color: white;
-        border: 2px solid $thirdColor;
-        border-left: none;
-        border-radius: 4px;
-        &:hover{
-            width: 24px;
-        }
-    }
-    .color{
-        height: 32px;
-        width: 130px;
     }
 }
