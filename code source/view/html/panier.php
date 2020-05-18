@@ -26,8 +26,8 @@ $db = Database::connect();
 // }
 
 //fill in produit
-$stmt = $db->prepare(" Insert into produit (ID_PRD,NOM,QTE_MAX,IMAGE,Id_cat,prix) value(?,?,?,?,?,?)");
-$stmt->execute(array(3,'prod3',50,'../imgs/Icon material-shopping-cart.svg',2,70));
+// $stmt = $db->prepare(" Insert into produit (ID_PRD,NOM,QTE_MAX,IMAGE,Id_cat,prix) value(?,?,?,?,?,?)");
+// $stmt->execute(array(3,'prod3',50,'../imgs/Icon material-shopping-cart.svg',2,70));
 // $stmt->execute(array(2,'prod2',30,'../imgs/Icon material-shopping-cart.svg',1,50));
 
 
@@ -176,6 +176,9 @@ if(isset($_POST['deleteCart'])){
         </div>
     </nav> -->
     <!-- end top-navbar -->
+
+    <?php include '../include/navbar.php'; ?>
+
 
     <section>
 
@@ -404,6 +407,8 @@ if(isset($_POST['deleteCart'])){
 
 
     <!-- start footer -->
+
+    <?php include '../include/footer.php'; ?>
     <!-- <footer>
         <div class="topDiv">
 
