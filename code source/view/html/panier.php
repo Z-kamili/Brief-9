@@ -26,8 +26,8 @@ $db = Database::connect();
 // }
 
 //fill in produit
-// $stmt = $db->prepare(" Insert into produit (ID_PRD,NOM,QTE_MAX,IMAGE,Id_cat,prix) value(?,?,?,?,?,?)");
-// $stmt->execute(array(1,'prod1',25,'../imgs/Icon material-shopping-cart.svg',2,100));
+$stmt = $db->prepare(" Insert into produit (ID_PRD,NOM,QTE_MAX,IMAGE,Id_cat,prix) value(?,?,?,?,?,?)");
+$stmt->execute(array(3,'prod3',50,'../imgs/Icon material-shopping-cart.svg',2,70));
 // $stmt->execute(array(2,'prod2',30,'../imgs/Icon material-shopping-cart.svg',1,50));
 
 
@@ -220,8 +220,9 @@ if(isset($_POST['deleteCart'])){
                                                 </div>
                                                 <div class="flex_between sm_margin_top">
 
-                                                    <span class="flex_center color_blue"> <i class="fas fa-eye icon_margin"></i> <p class="toUpperCase">voir le contenu</p></span>
-
+                                                    <a href="panier_details.php?id=<?php echo $idSelectedFixCart ?>" target="_blank" class="link">
+                                                        <span class="flex_center color_blue"> <i class="fas fa-eye icon_margin"></i> <p class="toUpperCase">voir le contenu</p></span>
+                                                    </a>
 
                                                     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                                                         <input type="hidden" name="idCartToDelete" value="<?php echo $idSelectedFixCart; ?>">

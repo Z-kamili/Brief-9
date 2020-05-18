@@ -863,8 +863,8 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-left: 350px;
 }
 
-body {
-  background-color: #EFF3F8;
+a:link {
+  text-decoration: none;
 }
 
 body section {
