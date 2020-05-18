@@ -49,11 +49,21 @@ Database::disconnect();
 // -------------------------------------------------------
 
 $selectedProfucts=[];
+ 
+$selectedFixCarts=[];
 
 session_start();
+
+//get selected products ids
 if(isset($_SESSION['productId'])){
     $selectedProfucts=array_unique($_SESSION['productId']);
     $_SESSION['productId'] = $selectedProfucts;
+}
+
+//get selected fixed carts ids
+if(isset($_SESSION['panierFixId'])){
+    $selectedFixCarts=array_unique($_SESSION['panierFixId']);
+    $_SESSION['panierFixId'] = $selectedFixCarts;
 }
 
 
@@ -74,14 +84,23 @@ if(isset($_POST['deleteProduct'])){
 
 }
 
+if(isset($_POST['deleteCart'])){
 
-$qte=1;
-
-if(isset($_POST['quantity'])){
-    $qte = $_POST['quantity'];
-    // $tot=$_POST['quantity']*$row['prix'];
-    // echo $tot;
+    echo $_POST['idCartToDelete'];
+    $indexIdCart = array_search($_POST['idCartToDelete'],$_SESSION['panierFixId']);
+    unset($_SESSION['panierFixId'][$indexIdCart]);
+    header('Location: panier.php');
+    
 }
+
+
+// $qte=1;
+
+// if(isset($_POST['quantity'])){
+//     $qte = $_POST['quantity'];
+//     // $tot=$_POST['quantity']*$row['prix'];
+//     // echo $tot;
+// }
 
 
 // if($selectedProfucts){
@@ -179,28 +198,103 @@ if(isset($_POST['quantity'])){
 
                 </div>
 
-                <div class="flex_ panier_container shadow">
-
-                    <div class="width_40 panierFSolo font_size_1 padding_inside border_right">
-                        <div class="flex_start">
-                            <img class="size_imgs" src="../imgs/Icon material-shopping-cart.svg" alt=""> 
-                            <p class="name_margin_left">nom du panier</p>
-                        </div>
-                        <div class="flex_between sm_margin_top">
-                            <span class="flex_center color_blue"> <i class="fas fa-eye icon_margin"></i> <p class="toUpperCase">voir le contenu</p></span>
-                            <span class="flex_center color_blue"><i class="fas fa-trash-alt icon_margin"></i><p class="toUpperCase">supprimer</p> </span>
-                        </div>
-                    </div>
-
-                    <div class="width_20 padding_inside border_right flex_center_all"><input class="quantity" type="number" id="quantity" name="quantity" value="1" min="1" max="5"></div>
-
-                    <div class="width_20 padding_inside border_right flex_center_all price_size">100 Mad</div>
-                    <input class="price_value" type="hidden" value="100">
-
-                    <div class="width_20 padding_inside flex_center_all price_size color_blue subTot">100 Mad</div>
 
 
-                </div>
+                    <?php
+                        if($selectedFixCarts){
+
+                            $db = Database::connect();
+
+                            foreach($selectedFixCarts as $idSelectedFixCart){
+                                $carts = $db->prepare("SELECT * FROM panier_fixe WHERE ID_PFIX = $idSelectedFixCart");
+                                $carts->execute();
+                                if($carts->rowCount()){
+                                    while($row = $carts->fetch()){ ?>
+
+
+                                        <div class="flex_ panier_container shadow">
+                                            <div class="width_40 panierFSolo font_size_1 padding_inside border_right">
+                                                <div class="flex_start">
+                                                    <img class="size_imgs" src="../imgs/Icon material-shopping-cart.svg" alt=""> 
+                                                    <p class="name_margin_left">Panier standard <?php echo $row['ID_PFIX'] ?> </p>
+                                                </div>
+                                                <div class="flex_between sm_margin_top">
+
+                                                    <span class="flex_center color_blue"> <i class="fas fa-eye icon_margin"></i> <p class="toUpperCase">voir le contenu</p></span>
+
+
+                                                    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                                                        <input type="hidden" name="idCartToDelete" value="<?php echo $idSelectedFixCart; ?>">
+                                                        <span class="flex_center color_blue"><i class="fas fa-trash-alt icon_margin"></i><input class="toUpperCase remove_input_style color_blue font_size_1" type="submit" name="deleteCart" value="supprimer"> </span>
+                                                    </form>
+
+
+                                                    <!-- <span class="flex_center color_blue"> <i class="fas fa-eye icon_margin"></i> <p class="toUpperCase">voir le contenu</p></span>
+                                                    <span class="flex_center color_blue"><i class="fas fa-trash-alt icon_margin"></i><p class="toUpperCase">supprimer</p> </span> -->
+                                                </div>
+                                            </div>
+
+                                            <div class="width_20 padding_inside border_right flex_center_all"><input class="quantity" type="number" name="quantity" value="1" min="1" max="3"></div>
+
+
+
+
+
+                                            <?php   
+                                            
+                                                $cartPrice = 0;
+                                                $db = Database::connect();
+                                                $idPanierTemp = $row['ID_PFIX'];
+                                                $stmt3 = $db->prepare("SELECT * FROM contenir_panierfix WHERE ID_PFIX = $idPanierTemp");
+                                                $stmt3->execute();
+
+                                                if($stmt3->rowCount()){
+                                                    while($row3 = $stmt3->fetch()){ ?>
+
+
+                                                                <?php  
+                                                                $idProdTemp = $row3['ID_PRD'];
+                                                                $stmt4 = $db->prepare("SELECT * FROM produit WHERE ID_PRD = $idProdTemp");
+                                                                $stmt4->execute();
+
+                                                                if($stmt4->rowCount()){
+                                                                    while($rowP = $stmt4->fetch()){ ?>
+                                                                        
+                                                                        <?php $cartPrice += ($rowP['prix']*$row3['QTE']); ?>
+
+
+                                                                    <?php } ?>
+                                                                <?php } ?>
+
+
+                                                        <?php } ?>
+                                                <?php } ?>
+                                                
+                                            <?php Database::disconnect(); ?>
+
+
+
+
+
+
+
+                                            <div class="width_20 padding_inside border_right flex_center_all price_size"><?php echo $cartPrice; ?> Mad</div>
+                                            <input class="price_value" type="hidden" value="100">
+
+                                            <div class="width_20 padding_inside flex_center_all price_size color_blue subTot"><?php echo $cartPrice; ?> Mad</div>
+                                        </div>
+
+
+                                    <?php }
+                                }else { ?> <p>Cette panier n'existe pas !</p> <?php } ?>
+                        <?php }
+
+                        Database::disconnect();
+
+                     }else { ?> <p>Aucun panier selectionné !</p> <?php } ?>
+
+
+                
                                 
             </div>
 
@@ -265,7 +359,7 @@ if(isset($_POST['quantity'])){
                                     
                                     ?>
 
-                                    <div class="width_20 padding_inside flex_center_all price_size color_blue subTot"><?php echo ($row['prix']*$qte); ?> Mad</div>
+                                    <div class="width_20 padding_inside flex_center_all price_size color_blue subTot"><?php echo ($row['prix']); ?> Mad</div>
 
 
                                     </div>

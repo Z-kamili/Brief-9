@@ -98,18 +98,18 @@ $list2=array_unique($_SESSION['panierFixId']);
                                 $stmt3->execute();
 
                                 if($stmt3->rowCount()){
-                                    while($row = $stmt3->fetch()){ ?>
+                                    while($row3 = $stmt3->fetch()){ ?>
 
 
                                                 <?php  
-                                                $idProdTemp = $row['ID_PRD'];
+                                                $idProdTemp = $row3['ID_PRD'];
                                                 $stmt4 = $db->prepare("SELECT * FROM produit WHERE ID_PRD = $idProdTemp");
                                                 $stmt4->execute();
 
                                                 if($stmt4->rowCount()){
                                                     while($rowP = $stmt4->fetch()){ ?>
                                                         
-                                                        <p>nom produit : <?php echo $rowP['NOM'] ?> ,prix : <?php echo $rowP['prix'] ?>, quantité : <?php echo $row['QTE'] ?> </p>
+                                                        <p>nom produit : <?php echo $rowP['NOM'] ?> ,prix : <?php echo $rowP['prix'] ?>, quantité : <?php echo $row3['QTE'] ?> </p>
 
 
                                                     <?php } ?>
