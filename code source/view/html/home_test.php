@@ -16,21 +16,39 @@ Database::disconnect();
 // }
 
 
-$_SESSION['productId']=[];
+
+// $_SESSION['productId']=[];
+// $_SESSION['panierFixId']=[];
+
+session_start();
+
 if(isset($_POST['addToCart'])){
 
-    session_start();
+    // session_start();
 
     $_SESSION['productId'][] = $_POST['idProd'];
 
+    $list=array_unique($_SESSION['productId']);
+
 }
-$list=array_unique($_SESSION['productId']);
+
 
 // session_start();
 // unset($_SESSION['productId']);
 
 
 // -------------------------------------
+
+// $_SESSION['panierFixId']=[];
+if(isset($_POST['addPFToCart'])){
+
+    // session_start();
+
+    $_SESSION['panierFixId'][] = $_POST['idPanF'];
+
+    $list2=array_unique($_SESSION['panierFixId']);
+
+}
 
 $db = Database::connect();
 
@@ -39,15 +57,7 @@ $stmt2->execute();
 
 Database::disconnect();
 
-$_SESSION['panierFixId']=[];
-if(isset($_POST['addPFToCart'])){
 
-    session_start();
-
-    $_SESSION['panierFixId'][] = $_POST['idPanF'];
-
-}
-$list2=array_unique($_SESSION['panierFixId']);
 
 ?>
 

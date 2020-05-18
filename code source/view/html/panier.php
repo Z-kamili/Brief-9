@@ -212,7 +212,7 @@ if(isset($_POST['deleteCart'])){
                                     while($row = $carts->fetch()){ ?>
 
 
-                                        <div class="flex_ panier_container shadow">
+                                        <div class="flex_ panier_container shadow special_border">
                                             <div class="width_40 panierFSolo font_size_1 padding_inside border_right">
                                                 <div class="flex_start">
                                                     <img class="size_imgs" src="../imgs/Icon material-shopping-cart.svg" alt=""> 
@@ -279,9 +279,10 @@ if(isset($_POST['deleteCart'])){
 
 
                                             <div class="width_20 padding_inside border_right flex_center_all price_size"><?php echo $cartPrice; ?> Mad</div>
-                                            <input class="price_value" type="hidden" value="100">
+                                            <input class="price_value" type="hidden" value="<?php echo $cartPrice; ?>">
 
                                             <div class="width_20 padding_inside flex_center_all price_size color_blue subTot"><?php echo $cartPrice; ?> Mad</div>
+                                            <input type="hidden" name="" value="<?php echo $cartPrice; ?>" class="getSubTot">
                                         </div>
 
 
@@ -325,44 +326,47 @@ if(isset($_POST['deleteCart'])){
                             if($prods->rowCount()){
                                 while($row = $prods->fetch()){ ?>
 
-                                    <div class="flex_ panier_container shadow">
+                                    <div class="flex_ panier_container shadow special_border">
 
-                                    <div class="width_40 panierFSolo font_size_1 padding_inside border_right">
-                                        <div class="flex_start">
-                                            <img class="size_imgs" src="<?php echo $row['IMAGE']; ?>" alt=""> 
-                                            <p class="name_margin_left"><?php echo $row['NOM']; ?></p>
+                                        <div class="width_40 panierFSolo font_size_1 padding_inside border_right">
+                                            <div class="flex_start">
+                                                <img class="size_imgs" src="<?php echo $row['IMAGE']; ?>" alt=""> 
+                                                <p class="name_margin_left"><?php echo $row['NOM']; ?></p>
+                                            </div>
+                                            
+                                            <div class="flex_between sm_margin_top">
+                                                <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                                                    <input type="hidden" name="idProductToDelete" value="<?php echo $idSelectedProduct; ?>">
+                                                    <span class="flex_center color_blue"><i class="fas fa-trash-alt icon_margin"></i><input class="toUpperCase remove_input_style color_blue font_size_1" type="submit" name="deleteProduct" value="supprimer"> </span>
+                                                </form>
+                                            </div>
+                                            
                                         </div>
+
                                         
-                                        <div class="flex_between sm_margin_top">
+
+                                        <div class="width_20 padding_inside border_right flex_center_all">
                                             <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                                                <input type="hidden" name="idProductToDelete" value="<?php echo $idSelectedProduct; ?>">
-                                                <span class="flex_center color_blue"><i class="fas fa-trash-alt icon_margin"></i><input class="toUpperCase remove_input_style color_blue font_size_1" type="submit" name="deleteProduct" value="supprimer"> </span>
+                                                <input class="quantity" type="number" value="1" name="quantity" min="1" max="<?php echo $row['QTE_MAX']; ?>">
                                             </form>
                                         </div>
+
+                                        <div class="width_20 padding_inside border_right flex_center_all price_size"><?php echo $row['prix'].' Mad'; ?></div>
+                                        <input class="price_value" type="hidden" value="<?php echo $row['prix']; ?>">
                                         
-                                    </div>
 
-                                    
+                                        <?php  
+                                        
+                                        
+                                        ?>
 
-                                    <div class="width_20 padding_inside border_right flex_center_all">
-                                        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                                            <input class="quantity" type="number" value="1" name="quantity" min="1" max="<?php echo $row['QTE_MAX']; ?>">
-                                        </form>
-                                    </div>
-
-                                    <div class="width_20 padding_inside border_right flex_center_all price_size"><?php echo $row['prix'].' Mad'; ?></div>
-                                    <input class="price_value" type="hidden" value="<?php echo $row['prix']; ?>">
-                                    
-
-                                    <?php  
-                                    
-                                    
-                                    ?>
-
-                                    <div class="width_20 padding_inside flex_center_all price_size color_blue subTot"><?php echo ($row['prix']); ?> Mad</div>
+                                        <div class="width_20 padding_inside flex_center_all price_size color_blue subTot"><?php echo ($row['prix']); ?> Mad</div>
+                                        <input type="hidden" name="" value="<?php echo $row['prix']; ?>" class="getSubTot">
 
 
                                     </div>
+
+                                    <div class="blank_md"></div>
 
 
                         <?php }
@@ -371,35 +375,32 @@ if(isset($_POST['deleteCart'])){
                         Database::disconnect();
                     }else { ?> <p>Aucun produit selectionné !</p> <?php } ?>
 
-                <!-- <div class="flex_ panier_container shadow">
-
-                    <div class="width_40 panierFSolo font_size_1 padding_inside border_right">
-                        <div class="flex_start">
-                            <img class="size_imgs" src="../imgs/Icon material-shopping-cart.svg" alt=""> 
-                            <p class="name_margin_left">nom du produit</p>
-                        </div>
-                        <div class="flex_between sm_margin_top">
-                            <span class="flex_center color_blue"><i class="fas fa-trash-alt icon_margin"></i><p class="toUpperCase">supprimer</p> </span>
-                        </div>
-                    </div>
-
-                    <div class="width_20 padding_inside border_right flex_center_all"><input class="quantity" type="number" id="quantity" name="quantity" value="1" min="1" max="5"></div>
-
-                    <div class="width_20 padding_inside border_right flex_center_all price_size">100 Mad</div>
-
-                    <div class="width_20 padding_inside flex_center_all price_size color_blue">100 Mad</div>
-
-
-                </div> -->
                                 
             </div>
 
         </div>
-
-
-       
+        
+        <div class="blank_md"></div>
 
     </section>
+
+
+    <!-- TOTAL PRICE -->
+
+    <div class="totalPrice price_size flex_center_end special_border shadow">
+        <p>Total TTC : </p>
+        <p class="color_blue name_margin_left" id="final_price">XXX Mad</p>
+    </div>
+
+    <section class="special_marg flex_center_end ">
+        <!-- <div class="blank"></div> -->
+        <button class="button_style special_border shadow color_blue">poursuivre vos achats</button>
+        <button class="button_style button_style2">finaliser votre commande</button>
+        <!-- <div class="blank"></div> -->
+    </section>
+
+
+
 
     <!-- start footer -->
     <!-- <footer>
@@ -414,19 +415,39 @@ if(isset($_POST['deleteCart'])){
     <!-- end footer -->
 
     <script>
+
+        // var final_price=0;
+
         function subTotPrice(){
             $(".quantity").click((event) => {
-                console.log($(event.currentTarget).val());
-                console.log('index ',$(".quantity").index(event.currentTarget));
+                // console.log($(event.currentTarget).val());
+                // console.log('index ',$(".quantity").index(event.currentTarget));
 
                 var price_value = $(`.price_value:eq(${$(".quantity").index(event.currentTarget)})`).val();
-                console.log(price_value);
+                // console.log(price_value);
 
-                $(`.subTot:eq(${$(".quantity").index(event.currentTarget)})`).html(`${price_value*($(event.currentTarget).val())} Mad`);
-                // console.log($(".subTot"));
+                //price * quantity
+                var price_tot = price_value*($(event.currentTarget).val());
+
+                $(`.subTot:eq(${$(".quantity").index(event.currentTarget)})`).html(`${price_tot} Mad`);
+                $(`.getSubTot:eq(${$(".quantity").index(event.currentTarget)})`).val(price_tot);
+                
+                totPrice();
             })
         }
         subTotPrice();
+
+        function totPrice(){
+            var len = $('.getSubTot').length;
+            var final_price=0;
+            for(var i = 0; i< len; i++ ){
+                final_price += Number(document.getElementsByClassName('getSubTot')[i].value);
+            }
+
+            $('#final_price').html(`${final_price} Mad`);
+
+        }
+        totPrice();
 
 
     </script>

@@ -36,6 +36,11 @@ $line_seperator: #0992fb;
   display: flex;
   align-items: center;
 }
+.flex_center_end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 .flex_between {
   display: flex;
   justify-content: space-between;
@@ -57,7 +62,7 @@ $line_seperator: #0992fb;
   margin-left: 40px;
 }
 .icon_margin {
-  margin-left: 10;
+  margin-left: 10px;
   margin-right: 10px;
 }
 .toUpperCase {
@@ -80,7 +85,7 @@ $line_seperator: #0992fb;
 }
 .shadow {
   //   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.01);
+  box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.05);
 }
 .quantity {
   font-size: 23px;
@@ -88,7 +93,7 @@ $line_seperator: #0992fb;
   background-color: $mainBgColor;
 }
 .price_size {
-  font-size: 32px;
+  font-size: 30px;
 }
 .sm_margin_top {
   margin-top: 20px;
@@ -115,6 +120,34 @@ input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
 }
 
+.special_marg {
+  margin: 0 5% 0 7%;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+.special_border {
+  border: 5px solid rgba(0, 0, 0, 0.025);
+}
+
+.button_style {
+  padding: 15px 25px;
+  margin: 30px;
+  font-size: 20px;
+  background-color: $mainBgColor;
+  text-transform: uppercase;
+}
+.button_style2 {
+  background-color: $basic_blue;
+  color: white;
+  border: none;
+}
+
+.totalPrice {
+  background-color: $mainBgColor;
+  height: 100px;
+  padding-right: 350px;
+  padding-left: 350px;
+}
 body {
   background-color: $bodyBgColor;
   section {
