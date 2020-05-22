@@ -51,9 +51,41 @@ Database::disconnect();
 $selectedProfucts=[];
  
 $selectedFixCarts=[];
+$qte = "";
 
 session_start();
 
+if(isset($_POST["send"])){
+   
+    if(isset($_SESSION['productId'])){
+        $selectedProfucts=array_unique($_SESSION['productId']);
+        $_SESSION['productId'] = $selectedProfucts;
+    }
+    $db = Database::connect();
+    $statement = $db->prepare("Insert into commande (ID) value(?)");
+    $statement->execute(array($_SESSION["ID"]));  
+    $statement = $db->prepare("Select ID_COMMANDE from commande where ID = ?  ORDER by ID_COMMANDE desc limit 1");
+    $statement->execute(array($_SESSION["ID"])); 
+    $item = $statement->fetch();
+    for($i=0;$i<count($selectedProfucts);$i++){
+    try{
+        $qte = $_POST["quantity" . $selectedProfucts[$i]];
+        $statement = $db->prepare("Insert into contenir(ID_PRD,ID_COMMANDE,QTE) value(?,?,?)");
+        $statement->execute(array($selectedProfucts[$i],$item["ID_COMMANDE"],$qte));
+       
+    }catch(Exception $e){
+        die('Erreur : ' . $e->getMessage());
+    }
+    }
+    unset($_SESSION['productId']);
+    header('Location: ../../../home.php');
+    Database::disconnect();
+    
+
+
+
+
+}
 //get selected products ids
 if(isset($_SESSION['productId'])){
     $selectedProfucts=array_unique($_SESSION['productId']);
@@ -65,8 +97,6 @@ if(isset($_SESSION['panierFixId'])){
     $selectedFixCarts=array_unique($_SESSION['panierFixId']);
     $_SESSION['panierFixId'] = $selectedFixCarts;
 }
-
-
 if(isset($_POST['deleteProduct'])){
 
 
@@ -342,7 +372,7 @@ if(isset($_POST['deleteCart'])){
                                                 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
                                                     <input type="hidden" name="idProductToDelete" value="<?php echo $idSelectedProduct; ?>">
                                                     <span class="flex_center color_blue"><i class="fas fa-trash-alt icon_margin"></i><input class="toUpperCase remove_input_style color_blue font_size_1" type="submit" name="deleteProduct" value="supprimer"> </span>
-                                                </form>
+                                                
                                             </div>
                                             
                                         </div>
@@ -351,8 +381,8 @@ if(isset($_POST['deleteCart'])){
 
                                         <div class="width_20 padding_inside border_right flex_center_all">
                                             <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-                                                <input class="quantity" type="number" value="1" name="quantity" min="1" max="<?php echo $row['QTE_MAX']; ?>">
-                                            </form>
+                                                <input class="quantity" type="number" value="1"  name=<?php echo  "quantity" . $row['ID_PRD']  ?>  min="1" max="<?php echo $row['QTE_MAX']; ?>">
+                                           
                                         </div>
 
                                         <div class="width_20 padding_inside border_right flex_center_all price_size"><?php echo $row['PRIX'].' Mad'; ?></div>
@@ -399,11 +429,12 @@ if(isset($_POST['deleteCart'])){
     <section class="special_marg flex_center_end ">
         <!-- <div class="blank"></div> -->
         <button class="button_style special_border shadow color_blue">poursuivre vos achats</button>
-        <button class="button_style button_style2">finaliser votre commande</button>
+        <input  type="submit" name="send" class="button_style button_style2" value="finaliser votre commande">
         <!-- <div class="blank"></div> -->
+      
     </section>
 
-
+    </form>
 
 
     <!-- start footer -->
@@ -423,7 +454,9 @@ if(isset($_POST['deleteCart'])){
     <script>
 
         // var final_price=0;
-
+        // document.getelementsbyclassname("button_style2")[0].addeventlistener("click"()=>{
+        //     window.location.href = "Addcmd.php";
+        // }); 
         function subTotPrice(){
             $(".quantity").click((event) => {
                 // console.log($(event.currentTarget).val());

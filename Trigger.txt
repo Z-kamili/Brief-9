@@ -1,0 +1,9 @@
+DROP TRIGGER IF EXISTS `after_members_insert`;
+DELIMITER $$
+CREATE TRIGGER `after_members_insert` AFTER INSERT ON `contenir` FOR EACH ROW BEGIN
+   UPDATE produit
+    SET produit.QTE_MAX = produit.QTE_MAX - NEW.Qte
+    WHERE produit.ID_PRD = NEW.ID_PRD;
+   END
+$$
+DELIMITER ;
